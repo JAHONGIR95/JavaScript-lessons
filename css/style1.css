@@ -1,0 +1,91 @@
+.indicator-1,
+.indicator-2,
+.indicator-3 {
+    width: 100%;
+    height: 2px;
+    display: block;
+    background-color: #cccccc;
+    margin: 2px 0 15px 0;
+}
+
+span {
+    width: 0%;
+    height: 100%;
+    display: block;
+    background-color: #ff441a;
+    transition: all .2s linear;
+}
+
+.btn-success span {
+    width: 35px;
+    height: 3px;
+    display: block;
+    background-color: #ffffff;
+    margin: 6px 0;
+}
+
+.by-box {
+    box-shadow: 0 0 10px rgba(80, 80, 80, .2);
+    transition: all .2s linear;
+    display: none;
+}
+
+.loader {
+    width: 100%;
+    height: 100vh;
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #005cbf;
+    z-index: 9999;
+}
+
+.loader-1 {
+    width: 10%;
+    display: block;
+    height: 20%;
+    border: 2px solid transparent;
+    border-left: 2px solid #ffffff;
+    position: absolute;
+    left: 45%;
+    top: 40%;
+    border-radius: 50%;
+    animation: rotate 1s infinite ease-in;
+}
+
+.loader-2 {
+    width: 8%;
+    display: block;
+    height: 16%;
+    border: 2px solid transparent;
+    border-left: 2px solid #ffffff;
+    position: absolute;
+    left: 46%;
+    top: 42%;
+    border-radius: 50%;
+    animation: rotate 1s .3s infinite ease-in-out;
+}
+
+.loader-3    {
+    width: 6%;
+    display: block;
+    height: 12%;
+    border: 2px solid transparent;
+    border-left: 2px solid #ffffff;
+    position: absolute;
+    left: 47%;
+    top: 44%;
+    border-radius: 50%; 
+    animation: rotate .7s .5s infinite ease-out;
+}
+
+@keyframes rotate {
+    0%{
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

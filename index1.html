@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Javascript lesson 1</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-md-6 offset-3">
+                <input type="text" class="form-control" onkeyup="add()" id="input">
+                <p id="result"></p>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-12">
+                <button type="button" class="btn btn-success" onmouseover="hover()" onmouseout="out()"
+                    onclick="up()">Hover Me</button>
+                <div class="box p-2" id="box">
+                    <h4>It is button success</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md-12">
+                <input type="text" class="form-control" id="name">
+                <button type="button" class="btn btn-success mt-3" onclick="adds()">Qo'shish</button>
+                <button type="button" class="btn btn-success mt-3" onclick="delet()">O'chirish</button>
+                <button type="button" class="btn btn-success mt-3" onclick="birlashtir()">Birlashtirish</button>
+
+                <p id="array"></p>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col">
+                <input type="text" class="form-control" id="UserName">
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" id="UserFam">
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" id="UserSharif">
+            </div>
+            <div class="col">
+                <button type="button" class="btn btn-success" onclick="addTable()">Qo'shish</button>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col">
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>T/R</th>
+                        <th>Ism</th>
+                        <th>Familiya</th>
+                        <th>Sharif</th>
+                    </tr>
+                    <tbody id="table">
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+<script src="js/jquery.slim.min.js"></script>
+<script src="js/src/popover.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+    function add() {
+        var text = document.getElementById('input').value;
+        document.getElementById('result').innerHTML = text;
+    }
+
+    function hover() {
+        document.getElementById('box').style.display = 'block';
+    }
+
+    function out() {
+        document.getElementById('box').style.display = 'none';
+    }
+    var x = 0;
+    function up() {
+        x++;
+        document.getElementById('result').innerHTML = x;
+    }
+
+    // var car = ['Damas', 'Nexia', 'Tico', 'Matiz', 'Malibu 3'];
+
+    // console.log(car[1] + ' ' + car[4]);
+    var array = [];
+
+    function adds() {
+        var name = document.getElementById('name').value;
+        array.push(name);
+        console.log(array);
+        document.getElementById('array').innerHTML = array;
+    }
+
+    var ism = ['Dilshod', 'Jamshid', 'Amir', 'Asad', 'Bilol', 'Orol'];
+
+    function delet() {
+        array.pop();
+        console.log(ism);
+        document.getElementById('array').innerHTML = array;
+    }
+    function birlashtir() {
+
+        var name = document.getElementById('name').value;
+        ism.splice(2, 0, name);
+        console.log(ism);
+    }
+
+    var i = 0;
+    function addTable(){
+        i++;
+        var ism = document.getElementById('UserName').value;
+        var familiya = document.getElementById('UserFam').value;
+        var sharif = document.getElementById('UserSharif').value;
+        
+        var table = '<tr><td>' + i + '</td><td>' + ism + '</td><td>' + familiya + '</td><td>' + sharif + '</td></tr>';
+
+        document.getElementById('table').innerHTML  += table;
+    }
+
+</script>
+
+
+</html>

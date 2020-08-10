@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Javascript lesson 2</title>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row my-5">
+            <div class="col-md-6 offset-3">
+
+                <input type="text" class="form-control mb-2" placeholder="Textdagi qiymat" id="a" onkeyup="fill()">
+                <input type="text" class="form-control mb-2" placeholder="Almashadigan qiymat" id="b">
+                <button type="button" class="btn btn-success" onclick="filter()">Almashtirish</button>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 offset-3">
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus sunt id quis laboriosam culpa,
+                    perspiciatis quia totam. Natus, earum nihil. Nam odit fugit, provident nemo quam velit repellat sint
+                    alias.
+                </p>
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus sunt id quis laboriosam culpa,
+                    perspiciatis quia totam. Natus, earum nihil. Nam odit fugit, provident nemo quam velit repellat sint
+                    alias.
+                </p>
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus sunt id quis laboriosam culpa,
+                    perspiciatis quia totam. Natus, earum nihil. Nam odit fugit, provident nemo quam velit repellat sint
+                    alias.
+                </p>
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus sunt id quis laboriosam culpa,
+                    perspiciatis quia totam. Natus, earum nihil. Nam odit fugit, provident nemo quam velit repellat sint
+                    alias.
+                </p>
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus sunt id quis laboriosam culpa,
+                    perspiciatis quia totam. Natus, earum nihil. Nam odit fugit, provident nemo quam velit repellat sint
+                    alias.
+                </p>
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus sunt id quis laboriosam culpa,
+                    perspiciatis quia totam. Natus, earum nihil. Nam odit fugit, provident nemo quam velit repellat sint
+                    alias.
+                </p>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col">
+                <input type="text" class="form-control" id="inputIsm">
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" id="inputFam">
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" id="inputSharif">
+            </div>
+            <div class="col">
+                <button type="button" class="btn btn-primary" onclick="add()">Kiritish</button>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col">
+                <table class="table">
+                    <tr>
+                        <th>T/R</th>
+                        <th>Ism</th>
+                        <th>Familiya</th>
+                        <th>sharif</th>
+                    </tr>
+                    <tbody id="tbody">
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</body>
+<script src="js/jquery.slim.min.js"></script>
+<script src="js/src/popover.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+    function filter() {
+        var element = document.getElementsByTagName('p');
+        var values = '';
+
+        var a = document.getElementById('a').value;
+        var b = document.getElementById('b').value;
+
+
+        for (var i = 0; i < element.length; i++) {
+
+            var replace = new RegExp(a, 'gi');
+
+            values = element[i].innerHTML;
+            values = values.replace(replace, b);
+            element[i].innerHTML = values;
+        }
+    }
+
+    function fill() {
+        var a = document.getElementById('a').value;
+        var rep = /[а-яА-Я]/;
+
+        a = a.replace(rep, '');
+        document.getElementById('a').value = a;
+    }
+
+    var ism = [];
+    var fam = [];
+    var sharif = [];
+
+    function add() {
+
+        var inputIsm = document.getElementById('inputIsm').value;
+        var inputFam = document.getElementById('inputFam').value;
+        var inputSharif = document.getElementById('inputSharif').value;
+
+        ism.push(inputIsm);
+        fam.push(inputFam);
+        sharif.push(inputSharif);
+        var allTr = ''; 
+
+        for (i = 0; i < ism.length; i++) {
+
+            var tr = '<tr><td>' + (i + 1) + '</td><td>' + ism[i] + '</td><td>' + fam[i] + '</td><td>' + sharif[i] + '</td></tr>';
+
+            allTr += tr;
+        }
+
+        document.getElementById('tbody').innerHTML = allTr;
+    }
+
+</script>
+
+</html>

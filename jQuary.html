@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style1.css">
+    <title>Javascript lesson 2</title>
+
+</head>
+
+<body>
+    <div class="loader">
+        <div class="loader-1"></div>
+        <div class="loader-2"></div>
+        <div class="loader-3"></div>
+    </div>
+   <div class="container">
+       <div class="row mt-4">
+            <div class="col-md-6 offset-3">
+                <form class="form-group">
+                    <input type="text" class="form-control" maxlength="100" placeholder="max 100 simvol">
+                    <div class="indicator-1">
+                        <span></span>
+                    </div>
+                    <input type="text" class="form-control" maxlength="50" placeholder="max 50 simvol">
+                    <div class="indicator-2">
+                        <span></span>
+                    </div>
+                    <textarea name="#" id="#" class="form-control" maxlength="1000" placeholder="max 1000 simvol"></textarea>
+                    <div class="indicator-3">
+                        <span></span>
+                    </div>
+                </form>
+            </div>
+       </div>
+       <div class="row mt-4">
+           <div class="col-md-6 offset-3">
+               <button type="button" class="btn btn-success">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+               </button>
+               <div class="row by-box mt-3">
+                   <div class="col">
+                       <h4>My sub menu</h4>
+                   </div>
+               </div>
+           </div>
+       </div>
+
+       <div class="row mt-5">
+            <div class="col-md-12">
+                <ul class="list-unstyled">
+                    <li class="d-inline-block box-1">Aksiyalar</li>
+                    <li class="d-inline-block box-2">Kiyim</li>
+                    <li class="d-inline-block box-3">Texnikaa</li>
+                </ul>
+                <div class="row">
+                    <div class="col-md-12" id="box-1">
+                        <h4>Aksiyalaar</h4>
+                    </div>
+                    <div class="col-md-12" id="box-2">
+                        <h4>Kiyim--kechak</h4>
+                    </div>
+                    <div class="col-md-12" id="box-3">
+                        <h4>Texnika</h4>
+                    </div>
+                </div>
+            </div>
+       </div>
+
+
+   </div>
+</body>
+<script src="js/jquery.slim.min.js"></script>
+<script src="js/src/popover.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+    $('.form-control').on('keyup', function(){
+        var input =   $(this).val();
+        var max = $(this).attr('maxlength');
+        var x = (input.length * 100) / max;
+
+        if(max == 100){
+            $('.indicator-1 span').css('width', x+'%');
+        }
+        else if(max == 50){
+            $('.indicator-2 span').css('width', x+'%');
+        }
+        else if(max == 1000){
+            $('.indicator-3 span').css('width', x+'%');
+        }
+        
+        console.log(x);
+    });
+
+    $('.btn-success').click(function() {
+
+        var display = $('.by-box').css('display');
+
+        if (display == 'none'){
+            $('.by-box').css('display', 'block');
+        }
+        else{
+            $('.by-box').css('display', 'none');
+        }
+    });
+
+    $(document).ready(function(){
+        $('.loader').css('display','none');
+    });
+
+</script>
+
+</html>

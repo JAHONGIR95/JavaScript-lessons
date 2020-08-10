@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Javascript lesson 2</title>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row my-5">
+            <div class="col-md-6 offset-3">
+                <form action="#" class="form-group">
+                    <label for="summa">Summa:</label>
+                    <input type="text" class="form-control" id="summa" placeholder="Summani kiriting">
+                    <label for="foiz">Foiz:</label>
+                    <input type="text" class="form-control" id="foiz" placeholder="Foizni kiriting">
+                    <label for="badal">Badal:</label>
+                    <input type="text" class="form-control" id="badal" placeholder="Boshlang'ich Summani kiriting">
+                    <label for="muddat">Muddat (yil):</label>
+                    <input type="text" class="form-control" id="muddat" placeholder="Muddatni kiriting">
+                </form>
+                <button type="button" class="btn btn-success mt-3" onclick="hisoblash()">Hisoblash</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <table class="table table-striped table-bordered">
+                    <tr>
+                        <th>N/Oy</th>
+                        <th>Foiz</th>
+                        <th>Qoldiq</th>
+                        <th>Kridet (oy)</th>
+                        <th>To'lov (oy)</th>
+                    </tr>
+                    <tbody id="tbody">
+
+                    </tbody>
+                    <tfoot id="tfood">
+
+                    </tfoot>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="js/jquery.slim.min.js"></script>
+<script src="js/src/popover.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+    var k = [];
+    var f = [];
+    var oyTulov = [];
+
+    function hisoblash() {
+
+        var summa = document.getElementById('summa').value;
+        var badal = document.getElementById('badal').value;
+        var muddat = document.getElementById('muddat').value;
+        var foiz = document.getElementById('foiz').value;
+
+        var n = summa - badal;
+        // console.log(n);
+        k[0] = n;
+        allTr = '';
+        var m = (n / (muddat * 12));
+        for(var i = 0; i < muddat * 12; i++){
+            // oylik kridet tulovi
+            k[i+1] = k[i] - (n/(muddat * 12));
+            // console.log(k[i+1] + " " + (i+1));
+
+            // oylik foizni hisoblash
+            f[i] = Math.floor(((k[i] * foiz) / 100) / 12);
+            // console.log(f[i] + " " + (i+1));
+
+            // jami oylik tulovni hisoblash
+            oyTulov[i] = Math.floor(f[i] + m);
+            // console.log(oyTulov[i] + " " + (i + 1));
+
+            var tr = '<tr><td>' + (i+1) + '</td><td>' + f[i] + '</td><td>' + k[i+1] + '</td><td>' + m + '</td><td>' + oyTulov[i] + '</td></tr>';
+            allTr += tr;
+
+        }
+     
+        document.getElementById('tbody').innerHTML = allTr;
+       
+    }
+
+
+
+
+</script>
+
+</html>
