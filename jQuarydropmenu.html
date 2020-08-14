@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style1.css">
+    <title>Javascript lesson 2</title>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <ul class="list-unstyled">
+                    <li class="d-inline-block" id="box-1"><a href="#">Aksiyalar</a></li>
+                    <li class="d-inline-block" id="box-2"><a href="#">Kinolar</a></li>
+                    <li class="d-inline-block" id="box-3"><a href="#">Sport</a></li>
+                    <li class="d-inline-block" id="box-4"><a href="#">Media</a></li>
+                    <li class="d-inline-block" id="box-5"><a href="#">Serial</a></li>
+                    <li class="d-inline-block" id="box-6"><a href="#">Kiyimlar</a></li>
+                    <li class="d-inline-block" id="box-7"><a href="#">Texnikalar</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 box-1">
+                <h4>Aksiyalar</h4>
+            </div>
+            <div class="col-md-12 box-2">
+                <h4>Kinolar</h4>
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-3">
+                <div class="card">
+                    <div class="card-title p-2">
+                        <div class="input-group">
+                            <input type="text" id="userName" class="form-control" placeholder="Ism familiyangiz">
+                            <div class="input-group-prepend">
+                                <button type="button" class="btn btn-success addName">Qo'shish</button>
+                            </div> 
+                        </div>
+                        <div class="card-text d-none">
+                            <h4></h4>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="savol"></h4>
+                        <ul class="list-unstyled">
+                            <li class="javob-1"></li>
+                            <li class="javob-2"></li>
+                            <li class="javob-3"></li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <button type="button" class="btn btn-secondary prev" disabled>Orqaga</button>
+                            </div>
+                            <div class="col-md-4 offset-2">
+                                <button type="button" class="btn btn-success javob">Javob berish</button>
+                            </div>
+                            <div class="col-md-2 offset-1">
+                                <button type="button" class="btn btn-secondary next">Oldinga</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="js/jquery.slim.min.js"></script>
+<script src="js/src/popover.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+    var savol = ["O'zbekiston poytaxti?", "Rossiya poytaxti?", "Fransiya poytaxti?"];
+    var javob = ["Tehron", "Samarqand", "Uels", "Dehli", "Peru", "Tokio"];
+    var Tjavob = ["Toshkent", "Moskva","Parij"];
+    var Bjavob = [];
+    var i = 0;
+
+    function chizish(){
+        $('.savol').text(savol[i]);
+        $('.javob-1').html('<input type="radio" name="savol" id="javob-1"><label for="javob-1">'+javob[i]+'</label>');
+        $('.javob-2').html('<input type="radio" name="savol" id="javob-2"><label for="javob-2">'+javob[i+1]+'</label>');
+        $('.javob-3').html('<input type="radio" name="savol" id="javob-3"><label for="javob-3">'+Tjavob[i]+'</label>');
+    }
+
+    $('.addName').click(function(){
+        var userName = $('#userName').val();
+        $('.input-group').removeClass('d-block').addClass('d-none');
+        $('.card-text').removeClass('d-none').addClass('d-block');
+        $('.card-title h4').text(userName);
+        chizish();
+    });
+    $('.javob').click(function(){
+        var bjavob = $('input[type=radio]:checked').attr('id');
+        bjavob = $('.'+bjavob).text();
+
+        var obj = {
+            index : i,
+            javob : bjavob
+        }
+        Bjavob.push(obj);
+        console.log(Bjavob);
+    })
+
+    $(document).ready(function () {
+
+        var element = '';
+
+        $('.list-unstyled li').hover(function () {
+            
+            var attrId = $(this).attr('id');
+            $('.col-md-12').css('display', 'none');
+            $('.'+attrId).css('display', 'block');
+            
+
+        }, function () {
+            var attrId = $(this).attr('id');
+            $('.col-md-12').css('display', 'none');
+            $('.'+attrId).css('display', 'block');    
+        });
+            
+        $('.container').mouseleave(function (){
+            $('.col-md-12').css('display', 'none');
+        })
+    });
+
+</script>
+
+</html>
